@@ -1,29 +1,38 @@
-# Create T3 App
+# Pawprint
 
-This is a [T3 Stack](https://create.t3.gg/) project bootstrapped with `create-t3-app`.
+## Introduction
+Welcome! 
 
-## What's next? How do I make an app with this?
+This is a mock designer fashion website for cats. I created it to practice UI/UX design skills as well as my skills using the [t3 stack](https://create.t3.gg/) (mostly Tailwind CSS, but also Prisma, TRPC,Typescript and Next.js). 
 
-We try to keep this project as simple as possible, so you can start with just the scaffolding we set up for you, and add additional things later when they become necessary.
+## Project aims
+This is a work in progress. The primary aims of this project are:
+- Develop UX/UI design by conducting research into contemporary fashion websites
+- Use Figma to apply these conventions to high-fidelity wireframes
+- Employ principles of [Nielsen's usability heuristics](https://www.nngroup.com/articles/ten-usability-heuristics/) throughout (e.g. by following atomic web design principles to create reusable components andensure consistency)
 
-If you are not familiar with the different technologies used in this project, please refer to the respective docs. If you still are in the wind, please join our [Discord](https://t3.gg/discord) and ask for help.
+The key user stories are:
+- Allow a user to browse a list of items
+- Allow a user to view a single item
+- Allow a user to add items to a basket
 
-- [Next.js](https://nextjs.org)
-- [NextAuth.js](https://next-auth.js.org)
-- [Prisma](https://prisma.io)
-- [Drizzle](https://orm.drizzle.team)
-- [Tailwind CSS](https://tailwindcss.com)
-- [tRPC](https://trpc.io)
 
-## Learn More
+Eventually I would like to implement the following:
+- User authentication using Clerk or NextAuth
+- More filtering and variety options
+- Persistent order history (after user auth set up)
 
-To learn more about the [T3 Stack](https://create.t3.gg/), take a look at the following resources:
 
-- [Documentation](https://create.t3.gg/)
-- [Learn the T3 Stack](https://create.t3.gg/en/faq#what-learning-resources-are-currently-available) — Check out these awesome tutorials
+## Using this repo
+The minimum version for this repo is node version 21.
 
-You can check out the [create-t3-app GitHub repository](https://github.com/t3-oss/create-t3-app) — your feedback and contributions are welcome!
+- Clone this repo
+- Run `npm i` to install all dependencies
+- Set up the `.env` file with a database URL. 
+    - There is an example of this in the `.env.example` file. You can either use a local url like in the example, or host a database on Supabase or similar. 
+- Run `./start-database.sh` (you may need to install [Docker](https://docs.docker.com/get-docker/))
+- Run the `npm run db:push` to sync the database with the Prisma schema
+- Run `npm run dev` to start the project
 
-## How do I deploy this?
+Have fun!
 
-Follow our deployment guides for [Vercel](https://create.t3.gg/en/deployment/vercel), [Netlify](https://create.t3.gg/en/deployment/netlify) and [Docker](https://create.t3.gg/en/deployment/docker) for more information.
