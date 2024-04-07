@@ -4,6 +4,9 @@ import { fontFamily } from "tailwindcss/defaultTheme";
 export default {
   content: ["./src/**/*.tsx"],
   theme: {
+    colors: {
+      'warmGrey': '#D9D9D9'
+    },
     extend: {
       fontFamily: {
         sans: ["var(--font-sans)", ...fontFamily.sans],

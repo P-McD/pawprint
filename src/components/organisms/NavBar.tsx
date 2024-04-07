@@ -7,8 +7,6 @@ const NavBar = () => {
         <DiscoverBar />
         <HeaderBar />
         </>
-    )
-
-    
+    ) 
 }
 export default NavBar

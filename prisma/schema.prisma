@@ -11,8 +11,14 @@ datasource db {
 }
 
 model Category {
-    id       Int       @id @default(autoincrement())
-    name     String
+    id           Int       @id @default(autoincrement())
+    categoryName String
+    products     Product[]
+}
+
+model Colour {
+    id Int @id @default(autoincrement())
+    colourName String
     products Product[]
 }
 
@@ -23,6 +29,9 @@ model Product {
     productPrice       Float
     productDescription String
     productDetails     String
+    
+    colour  Colour @relation(fields: [colourId], references: [id])
+    colourId Int
 
     category   Category @relation(fields: [categoryId], references: [id])
     categoryId Int

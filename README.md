@@ -1,5 +1,4 @@
 # Pawprint
-
 ## Introduction
 Welcome! 
 
