@@ -12,12 +12,10 @@ type ItemCardListType = {
     createdAt: Date;
   }[];
 };
-// "grid grid-cols-2 justify-items md:grid-cols-3 lg:grid-cols-4 gap-4"
-
 const ItemCardList = ({ dataToList }: ItemCardListType) => {
   console.log(dataToList);
   return (
-    <div className="grid grid-cols-2 justify-items md:grid-cols-3 lg:grid-cols-4 gap-4">
+    <div className="grid justify-center grid-cols-4 gap-[24px] justify-items md:grid-cols-6 lg:grid-cols-12">
         {dataToList?.map((item) => {
           return (
             <ItemCard
