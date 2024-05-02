@@ -2,9 +2,12 @@ import ShoppingBagOutlinedIcon from "@mui/icons-material/ShoppingBagOutlined";
 import { H1Title, H2Title, H3Title, H4Title } from "../bosons/TitleStyles";
 import MenuOutlinedIcon from "@mui/icons-material/MenuOutlined";
 import Link from "next/link";
+import { useState } from "react";
 
 const HeaderBar = () => {
-  const categories = [
+  const [isMenuOpen, setIsMenuOpen] = useState(true)
+  const handleNavBar = () => setIsMenuOpen(!isMenuOpen)
+  const headerCategories = [
     { title: "new in", linkTo: "/new-in" },
     { title: "eveningwear", linkTo: "/eveningwear" },
     { title: "jewellery", linkTo: "/jewellery" },
@@ -43,7 +46,7 @@ const HeaderBar = () => {
           <H1Title title="pawprint" />
         </Link>
       </div>
-      <div className="grid grid-cols-12 justify-center gap-[24px] pb-4">
+      <div className="hidden md:grid grid-cols-12 justify-center gap-[24px] pb-4">
         <Link
           className="col-span-2 col-start-3 justify-self-center"
           href="/new-in"
@@ -68,7 +71,12 @@ const HeaderBar = () => {
         >
           <H3Title title="Accessories" />
         </Link>
+        
+        </div>
+        <div onClick={handleNavBar} className="sm:grid md:hidden lg:hidden">
+          <MenuOutlinedIcon />
       </div>
+      <div className={ isMenuOpen ? "fixed left-0 top-0 w-[65%] md:hidden p-10 ease-in duration-500 bg-warmGrey" : "fixed left-[-100%] top-0 w-[65%] md:hidden p-10 ease-in duration-500" }>hi</div>
 
     </nav>
   );
