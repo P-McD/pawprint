@@ -1,5 +1,3 @@
-import { PropsWithChildren } from "react"
-import Image from "next/image"
 import { H3Title } from "../bosons/TitleStyles" //todo - change to card title vs font title
 import { MediumText } from "../bosons/FontStyles"
 

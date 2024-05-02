@@ -1,9 +1,13 @@
-import { Mandali } from "next/font/google";
+import { Mandali, Manuale } from "next/font/google";
 import type { FC, PropsWithChildren } from 'react';
 const mandali = Mandali({
     subsets : ["latin"],
     weight: "400"
   })
+  const manualeRegular = Manuale({
+    subsets: ["latin"],
+    weight: "400",
+  });
 
 export const LargeText : FC<PropsWithChildren> = ({children}) => {
     return <p className={`${mandali.className} text=[16px]`}>{children}</p>;
