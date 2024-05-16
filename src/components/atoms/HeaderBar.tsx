@@ -1,63 +1,45 @@
 import ShoppingBagOutlinedIcon from "@mui/icons-material/ShoppingBagOutlined";
-import { H1Title, H2Title, H3Title, H4Title } from "../bosons/TitleStyles";
+import { H1Title, H3Title } from "../bosons/TitleStyles";
 import MenuOutlinedIcon from "@mui/icons-material/MenuOutlined";
+import CloseIcon from "@mui/icons-material/Close";
 import Link from "next/link";
 import { useState } from "react";
 
 const HeaderBar = () => {
-  const [isMenuOpen, setIsMenuOpen] = useState(true)
-  const handleNavBar = () => setIsMenuOpen(!isMenuOpen)
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const handleNavBar = () => setIsMenuOpen(!isMenuOpen);
   const headerCategories = [
     { title: "new in", linkTo: "/new-in" },
-    { title: "eveningwear", linkTo: "/eveningwear" },
+    { title: "ready-to-wear", linkTo: "/ready-to-wear" },
     { title: "jewellery", linkTo: "/jewellery" },
     { title: "accessories", linkTo: "/accessories" },
   ];
   return (
-    // <section className="shadow-[0_3px_10px_rgb(0,0,0,0.2)] flex justify-between h-16 fixed w-full pl-5 pr-5 pb-1 pt-3">
-    //   <MenuOutlinedIcon />
-    //<H1Title title="pawprint" />
-    //   <ShoppingBagOutlinedIcon />
-    // </section>
-
-    // <nav className="fixed h-24 w-screen shadow-xl">
-    //   <div className="flex h-[75%] w-full justify-center py-4 px-4 2xl:px-16">
-    //     <Link href="/">
-    //       <H1Title title="pawprint" />
-    //     </Link>
-    //   </div>
-    //   <div className="flex h-[25%] w-full items-center justify-between px-4 2xl:px-16">
-    //     <ul className= "hidden sm:flex">
-    //       <Link href="/new-in">
-    //         <li className="ml-10"><H3Title title="New in"/></li>
-    //       </Link>
-    //     </ul>
-    //   </div>
-    // </nav>
-    // <section className="shadow-[0_3px_10px_rgb(0,0,0,0.2)] flex justify-between h-16 fixed w-full pl-5 pr-5 pb-1 pt-3">
-    //   <MenuOutlinedIcon />
-    //<H1Title title="pawprint" />
-    //   <ShoppingBagOutlinedIcon />
-    // </section>
-
-    <nav className="min-h-24 max-h-24 w-screen shadow-xl">
-      <div className="flex w-full justify-center px-4 py-2 2xl:px-16">
-        <Link href="/">
+    <nav className="max-h-24 min-h-24 w-screen shadow-xl">
+      <div className="grid grid-cols-4 grid-flow-col grid-rows-1 md:flex w-full justify-center px-4 py-2 2xl:px-16">
+      <div onClick={handleNavBar} className="col-span-1 md:hidden lg:hidden">
+        <MenuOutlinedIcon />
+      </div>
+      <div className="col-span-1 col-start-4 align-self-center justify-self-end md:hidden lg:hidden">
+        <ShoppingBagOutlinedIcon />
+      </div>
+        <Link className="col-span-2 col-start-2 justify-self-center md:flex" href="/">
           <H1Title title="pawprint" />
         </Link>
+
       </div>
-      <div className="hidden md:grid grid-cols-12 justify-center gap-[24px] pb-4">
+      <div className="hidden grid-cols-12 justify-center gap-[24px] pb-4 md:grid">
         <Link
-          className="col-span-2 col-start-3 justify-self-center"
+          className="col-span-2 col-start-3 justify-self-center hover:border-b duration-500 ease-in"
           href="/new-in"
         >
           <H3Title title="New in" />
         </Link>
         <Link
           className="col-span-2 col-start-5 justify-self-center"
-          href="/eveningwear"
+          href="/ready-to-wear"
         >
-          <H3Title title="Eveningwear" />
+          <H3Title title="Ready-to-wear" />
         </Link>
         <Link
           className="col-span-2 col-start-7 justify-self-center"
@@ -71,20 +53,46 @@ const HeaderBar = () => {
         >
           <H3Title title="Accessories" />
         </Link>
-        
-        </div>
-        <div onClick={handleNavBar} className="sm:grid md:hidden lg:hidden">
-          <MenuOutlinedIcon />
       </div>
-      <div className={ isMenuOpen ? "fixed left-0 top-0 w-[65%] md:hidden p-10 ease-in duration-500 bg-warmGrey" : "fixed left-[-100%] top-0 w-[65%] md:hidden p-10 ease-in duration-500" }>hi</div>
-
+      
+      <div
+        className={
+          isMenuOpen
+            ? "fixed left-0 top-0 h-full w-[65%] z-30 bg-warmGrey p-10 duration-500 ease-in md:hidden"
+            : "fixed left-[-100%] h-full top-0 z-30 w-[65%] p-10 duration-500 ease-in md:hidden"
+        }
+      >
+        <div className="flex w-full items-center justify-start flex-col py-6">
+          <div className="flex-col py-6"> 
+            <div onClick={handleNavBar} className="cursor-pointer py-2">
+              <CloseIcon />
+            </div>
+            <div className="py-4">
+              <Link href="/">
+                <div onClick={() => setIsMenuOpen(false)} />
+                HOME
+              </Link>
+            </div>
+            {headerCategories.map((category) => {
+              return (
+                <div key={category.title} className="py-4">
+                  <Link href={category.linkTo}>
+                    <div onClick={() => setIsMenuOpen(false)} />
+                    {category.title.toUpperCase()}
+                  </Link>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      </div>
     </nav>
   );
 };
 export default HeaderBar;
 
-
-{/* <div className="flex w-full justify-center px-4 py-4 2xl:px-16">
+{
+  /* <div className="flex w-full justify-center px-4 py-4 2xl:px-16">
 <Link href="/">
   <H1Title title="pawprint" />
 </Link>
@@ -93,4 +101,5 @@ export default HeaderBar;
 {categories.map((category, index) => {
 return (<CategoryItem key={category.title} title={category.title} linkTo={category.linkTo} index={index} />)
 })}
-</div> */}
+</div> */
+}

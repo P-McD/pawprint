@@ -24,6 +24,9 @@ export const productRouter = createTRPCRouter({
   }),
   getAll: publicProcedure.query(({ctx}) => {
     return ctx.db.product.findMany()
+  }),
+  getPaginated: publicProcedure.query(({ctx}) => {
+    return ctx.db.product.findMany({take: 2})
   })
 
 });

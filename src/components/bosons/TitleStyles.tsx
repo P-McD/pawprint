@@ -33,6 +33,11 @@ export const H2Title = ({ title, fontSize = "text-[20px] lg:text-[22px]" }: Font
     return <h2 className={`${manualeMedium.className} ${fontSize}`}>{title.toUpperCase()}</h2>;
   };
 
+//H2 XL
+export const H2LargeTitle = ({ title, fontSize = "text-[24px] lg:text-[28px]" }: FontTitleType) => {
+  return <h2 className={`${manualeRegular.className} ${fontSize}`}>{title.toUpperCase()}</h2>;
+};
+
 //H3
 export const H3Title = ({ title, fontSize = "text-[18px] lg:text-[20px]"  }: FontTitleType) => {
   return <h3 className={`${manualeRegular.className} ${fontSize}`}>{title.toUpperCase()}</h3>;

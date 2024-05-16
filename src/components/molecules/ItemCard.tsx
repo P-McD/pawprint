@@ -10,9 +10,9 @@ export type ItemCardType = {
 
 const ItemCard = ({productId, productName, productImage, productPrice } : ItemCardType) => {
     return (
-        <section key={productId} className="col-span-2 lg:col-span-3">
+        <section key={productId} className="col-span-2 lg:col-span-3 w-full">
 
-            <img className="w-[168px] h-[241px] lg:w-[250px] mb-[10px]"src={productImage} alt={productName} />
+            <img className="w-full mb-[10px]"src={productImage} alt={productName} />
             <H3Title title={productName} />
             <div className="relative bottom-0">
             <MediumText>£{productPrice}</MediumText>
