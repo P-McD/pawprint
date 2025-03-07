@@ -4,6 +4,7 @@ import NavBar from "~/components/organisms/NavBar";
 import { api } from "~/utils/api";
 
 import "~/styles/globals.css";
+import Head from "next/head";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -16,10 +17,17 @@ const mandali = Mandali({
 })
 const MyApp: AppType = ({ Component, pageProps }) => {
   return (
+    <>    
+    <Head>
+        <title>Pawprint</title>
+        <meta name="description" content="pawprint" />
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
     <main className={mandali.className}>
       <NavBar />
       <Component {...pageProps} />
     </main>
+    </>
   );
 };
 

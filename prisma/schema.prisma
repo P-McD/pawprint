@@ -2,40 +2,76 @@
 // learn more about it in the docs: https://pris.ly/d/prisma-schema
 
 generator client {
-    provider = "prisma-client-js"
+  provider = "prisma-client-js"
 }
 
 datasource db {
-    provider = "postgresql"
-    url      = env("DATABASE_URL")
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Cart {
+  id        String     @id @default(cuid())
+  cartItems CartItem[]
+}
+
+model CartItem {
+  id       String @id @default(cuid())
+  quantity Int
+
+  productItem   ProductItem @relation(fields: [productItemId], references: [id])
+  productItemId String
+
+  cart   Cart   @relation(fields: [cartId], references: [id])
+  cartId String
 }
 
 model Category {
-    id           Int       @id @default(autoincrement())
-    categoryName String
-    products     Product[]
+  id           Int       @id @default(autoincrement())
+  categoryName String
+  products     Product[]
 }
 
 model Colour {
-    id Int @id @default(autoincrement())
-    colourName String
-    products Product[]
+  id         Int       @id @default(autoincrement())
+  colourName String
+  products   Product[]
 }
 
 model Product {
-    id                 String @id @default(cuid())
-    productName        String
-    productImage       String
-    productPrice       Float
-    productDescription String
-    productDetails     String
-    
-    colour  Colour @relation(fields: [colourId], references: [id])
-    colourId Int
+  id                 String @id @default(cuid())
+  productName        String
+  productImage       String
+  productPrice       Float
+  productDescription String
+  productDetails     String
 
-    category   Category @relation(fields: [categoryId], references: [id])
-    categoryId Int
-    createdAt  DateTime @default(now())
+  colour   Colour @relation(fields: [colourId], references: [id])
+  colourId Int
 
-    @@index([createdAt])
+  category   Category @relation(fields: [categoryId], references: [id])
+  categoryId Int
+  createdAt  DateTime @default(now())
+
+  productItems ProductItem[]
+
+  @@index([createdAt])
+}
+
+model ProductItem {
+  id              String @id @default(cuid())
+  quantityInStock Int
+
+  product   Product @relation(fields: [productId], references: [id])
+  productId String
+
+  size     Size       @relation(fields: [sizeName], references: [sizeName])
+  sizeName String
+  CartItem CartItem[]
+}
+
+model Size {
+  sizeName    String @id
+  ProductItem ProductItem[]
+  @@unique([sizeName])
 }
