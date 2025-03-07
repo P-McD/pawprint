@@ -1,3 +1,4 @@
+import { inputAdornmentClasses } from "@mui/material";
 import { z } from "zod";
 
 import { createTRPCRouter, publicProcedure } from "~/server/api/trpc";
@@ -27,6 +28,12 @@ export const productRouter = createTRPCRouter({
   }),
   getPaginated: publicProcedure.query(({ctx}) => {
     return ctx.db.product.findMany({take: 2})
+  }),
+  getSingleProduct: publicProcedure
+  .input(z.object({id : z.string()}))
+  .query(({ctx, input}) => {
+    return ctx.db.product.findUniqueOrThrow({
+      where: { id: input.id}
+    })
   })
-
 });
