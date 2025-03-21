@@ -25,7 +25,8 @@ const MyApp: AppType = ({ Component, pageProps }) => {
       </Head>
     <main className={mandali.className}>
       <NavBar />
-      <Component {...pageProps} />
+      <div className="lg:mx-[60px]">
+      <Component {...pageProps} /></div>
     </main>
     </>
   );

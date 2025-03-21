@@ -29,7 +29,7 @@ export const H1Title = ({ title, fontSize = "text-[24px] lg:text-[26px]" }: Font
   };
 
 //H2
-export const H2Title = ({ title, fontSize = "text-[20px] lg:text-[22px]" }: FontTitleType) => {
+export const H2Title = ({ title, fontSize = "text-[20px] lg:text-[24px]" }: FontTitleType) => {
     return <h2 className={`${manualeMedium.className} ${fontSize}`}>{title.toUpperCase()}</h2>;
   };
 
@@ -44,6 +44,6 @@ export const H3Title = ({ title, fontSize = "text-[18px] lg:text-[20px]"  }: Fon
 };
 
 //H4 (same styling as medium text)
-export const H4Title = ({ title, fontSize = "text-[14px]" }: FontTitleType) => {
+export const H4Title = ({ title, fontSize = "text-[16px]" }: FontTitleType) => {
     return <h4 className={`${mandali.className} ${fontSize}`}>{title}</h4>;
   };

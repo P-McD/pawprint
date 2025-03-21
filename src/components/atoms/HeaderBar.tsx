@@ -36,19 +36,19 @@ const HeaderBar = () => {
           <H3Title title="New in" />
         </Link>
         <Link
-          className="col-span-2 col-start-5 justify-self-center"
+          className="col-span-2 col-start-5 justify-self-center hover:border-b duration-500 ease-in"
           href="/ready-to-wear"
         >
           <H3Title title="Ready-to-wear" />
         </Link>
         <Link
-          className="col-span-2 col-start-7 justify-self-center"
+          className="col-span-2 col-start-7 justify-self-center hover:border-b duration-500 ease-in"
           href="/jewellery"
         >
           <H3Title title="Jewellery" />
         </Link>
         <Link
-          className="col-span-2 col-start-9 justify-self-center"
+          className="col-span-2 col-start-9 justify-self-center hover:border-b duration-500 ease-in"
           href="/accessories"
         >
           <H3Title title="Accessories" />

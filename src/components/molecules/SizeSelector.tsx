@@ -1,13 +1,7 @@
 import React, { ChangeEvent, useState } from "react";
 import { SizeButton, SizeButtonGroup } from "../atoms/SizeButton";
 
-// export type ProductItemType = {
-//     items : {id: string;
-//   quantityInStock: number;
-//   productId: string;
-//   sizeId: string;}
-// }
-const SizeSelector = (items: {
+export type ProductItemType = {
   items:
     | {
         id: string;
@@ -16,21 +10,27 @@ const SizeSelector = (items: {
         sizeName: string;
       }[]
     | undefined;
-}) => {
-  const [size, setSize] = useState("");
-
+  size: string;
+  setSize: (size: string) => void;
+};
+const SizeSelector = ({ items, size, setSize }: ProductItemType) => {
   return (
     <>
-      <div>SizeSelector</div>
+      <p>Size: {size.toUpperCase()}</p>
       <SizeButtonGroup
         value={size}
         onChange={(e: ChangeEvent<HTMLInputElement>) => setSize(e.target.value)}
       >
         {items &&
-          items.items?.map((item) => {
+          items.map((item) => {
             {
               return (
-                <SizeButton value={item.sizeName}>{item.sizeName}</SizeButton>
+                <SizeButton
+                  outOfStock={item.quantityInStock === 0 ? true : false}
+                  value={item.sizeName}
+                >
+                  {item.sizeName.toUpperCase()}
+                </SizeButton>
               );
             }
           })}
