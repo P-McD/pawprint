@@ -15,7 +15,8 @@ type AddToBagParams =
 
 export default async function AddToBag({productItem, cartId } : AddToBagParams)
 {
-    const cartItem = await api.cartItem.createNewCartItem.useMutation();
-    cartItem.mutate({productItem, cartId})
+    //TODO: rethink test before proceeding
+    // const cartItem = await api.cartItem.createNewCartItem.useMutation();
+    // cartItem.mutate({productItem, cartId})
 }
 

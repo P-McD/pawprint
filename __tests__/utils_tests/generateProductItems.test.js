@@ -1,5 +1,6 @@
-const { generateProductItems } = require("../../seed/generateProductItems");
 
+import { generateProductItems } from 'seed/generateProductItems';
+import { describe, expect, test } from 'vitest'
 describe("generate product items", () => {
   test("generates an item with one size", () => {
     const products = [

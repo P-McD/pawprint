@@ -1,12 +1,12 @@
-import { categoriesData } from "./seed-data/test-seed-data/test.categories.ts";
-import { prismaClientTest as prisma} from "./prismaClientTest.ts";
-import { productsData } from "./seed-data/test-seed-data/test.products.ts";
-import { coloursData } from "./seed-data/test-seed-data/test.colours.ts";
-import { sizesData } from "./seed-data/test-seed-data/test.sizes.ts";
+import { categoriesData } from "./seed-data/dev-seed-data/dev.categories.ts";
+import { PrismaClient } from "@prisma/client";
+import { productsData } from "./seed-data/dev-seed-data/dev.products.ts";
+import { coloursData } from "./seed-data/dev-seed-data/dev.colours.ts";
+import { sizesData } from "./seed-data/dev-seed-data/dev.sizes.ts";
 import { generateProductItems } from "./generateProductItems.ts";
 
-
-export const testSeed = async () => {
+const prisma = new PrismaClient();
+export const devSeed = async () => {
   await prisma.productItem.deleteMany({});
   await prisma.product.deleteMany({});
   await prisma.colour.deleteMany({});
@@ -27,4 +27,4 @@ export const testSeed = async () => {
   console.log('seeding complete!')
 
 };
-
+devSeed().catch((err) => console.log('ERROR ENCOUNTERED >>>', err));
