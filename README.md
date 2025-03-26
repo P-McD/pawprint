@@ -8,7 +8,9 @@ This is a mock designer fashion website for cats. I created it to practice UI/UX
 
 ## Project aims
 
-This is a work in progress. The primary aims of this project are:
+This is a work in progress that I started to develop my practical and theoretical knowledge of UI/UX design and planning full-stack applications. You can read the full rationale behind this project (as well as a summary of my research) [here](https://docs.google.com/document/d/1Tx50kAbMSpxY7mgkFLNp_oBMKWx55j1bEnvpWzBwVAc/edit?tab=t.0).
+
+The primary aims of this project are:
 
 - Develop UX/UI design by conducting research into contemporary fashion websites
 - Learn to use Figma to apply these conventions to high-fidelity wireframes
